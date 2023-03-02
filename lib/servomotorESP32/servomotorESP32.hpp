@@ -38,23 +38,26 @@ public:
                uint16_t minPosition = 0, uint16_t maxPosition = 180);
 
     /**
-     * \brief Función para
-     * \param deg:
+     * \brief Función para definir la posición del servomotor en grados. Los valores mayores al párametro
+     * 'maxPosition' definido en la función setup, se delimitaran a ese rango.
+     * \param deg: Posición deseada [deg].
      * \returns Sin retorno.
      */
     void write(uint16_t deg);
 
     /**
-     * \brief Función para
-     * \param pulseWidth: a
-     * \returns Ciclo de trabajo.
+     * \brief Función para convertir el ancho de pulso [ms] a ciclo de trabajo [bits] de acuerdo a la
+     * frecuencia y resolución del canal PWM dados en la función setup.
+     * \param pulseWidth: Ancho de pulso [ms].
+     * \returns Ciclo de trabajo [bits].
      */
     uint16_t widthToDuty(float pulseWidth);
 
     /**
-     * \brief Función para
-     * \param deg: a
-     * \returns Ciclo de trabajo.
+     * \brief Función para convertir la posición [deg] a ciclo de trabajo [bits] de acuerdo a los valores
+     * máximos y mínimos de posición dados en la función setup.
+     * \param deg: Posición [deg]
+     * \returns Ciclo de trabajo [bits].
      */
     uint16_t degToDuty(uint16_t deg);
 
@@ -68,9 +71,9 @@ private:
     uint16_t _minPosition; // Posición mínima [deg] a la que puede moverse el servomotor.
     uint16_t _maxPosition; // Posición máxima [deg] a la que puede moverse el servomotor.
 
-    float _dutyMin; //
-    float _dutyMax; //
-    float _duty;    //
+    float _dutyMin; // Ciclo de trabajo mínimo [bits].
+    float _dutyMax; // Ciclo de trabajo máximo [bits].
+    float _duty;    // Ciclo de trabajo deseado [bits].
 };
 
 #endif
